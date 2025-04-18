@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
   title: "Justa Gerador de Áudio",
-  description: "Gere áudio realista a partir de texto usando o modelo GPT-4o-mini-tts da OpenAI",
+  description: "Gerador de áudio",
     generator: 'v0.dev'
 }
 
