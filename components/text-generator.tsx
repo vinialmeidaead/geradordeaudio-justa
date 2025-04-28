@@ -20,17 +20,27 @@ export default function TextGenerator() {
     setIsGenerating(true)
 
     try {
-      const response = await fetch("/api/generate-text", {
+      const response = await fetch("https://geral-dify.rf7qpg.easypanel.host/v1/workflows/run", {
         method: "POST",
         headers: {
+          "Authorization": "Bearer app-Xqkpw49IDlQuAyoQXBjKb0At",
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          prompt,
+          inputs: {
+            conteudo: prompt
+          },
+          response_mode: "blocking",
+          user: "justa-ia",
         }),
       })
 
       const data = await response.json()
+      if (!response.ok) {
+        throw new Error(data.message || "Falha na requisição à API")
+      }
+
+      // Ajuste para acessar o texto no caminho correto da resposta
       if (data.data?.outputs?.final) {
         setResult(data.data.outputs.final)
         toast({
@@ -38,7 +48,7 @@ export default function TextGenerator() {
           description: "Texto gerado com sucesso!",
         })
       } else {
-        throw new Error(data.error || data.data?.error || "Falha ao gerar texto")
+        throw new Error("Nenhum texto foi gerado")
       }
     } catch (error) {
       toast({
@@ -46,6 +56,7 @@ export default function TextGenerator() {
         description: "Ocorreu um erro ao gerar o texto",
         variant: "destructive",
       })
+      console.error(error)
     } finally {
       setIsGenerating(false)
     }
