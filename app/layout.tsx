@@ -7,9 +7,9 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "Justa Gerador de Áudio",
-  description: "Gerador de áudio",
-    generator: 'v0.dev'
+  title: "Justa IA",
+  description: "Gerador de áudio e texto",
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({
