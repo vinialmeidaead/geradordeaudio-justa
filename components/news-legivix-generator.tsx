@@ -20,7 +20,7 @@ export default function NewsLegivixGenerator() {
     setIsGenerating(true)
 
     try {
-      const response = await fetch("http://gestaoia.ead.support/v1/workflows/run", {
+      const response = await fetch("https://gestaoia.ead.support/v1/workflows/run", {
         method: "POST",
         headers: {
           "Authorization": "Bearer app-12QRYo2HFBbWQ33eoZvW3W83",

@@ -23,8 +23,8 @@ export default function GeneratorSelector() {
           <SelectContent>
             <SelectItem value="text">Gerador de Texto</SelectItem>
             <SelectItem value="audio">Gerador de Áudio</SelectItem>
-            <SelectItem value="legivix">Gerador Legivix</SelectItem>
-            <SelectItem value="news-legivix">Gerador com Notícias - Legivix</SelectItem>
+            <SelectItem value="legivix">Gerador de Conteúdo (Base de Conhecimento) - Legivix</SelectItem>
+            <SelectItem value="news-legivix">Gerador de Conteúdo (com base em Notícias) - Legivix</SelectItem>
             <SelectItem value="rewriter-legivix">Reescritor de Conteúdo - Legivix</SelectItem>
           </SelectContent>
         </Select>
