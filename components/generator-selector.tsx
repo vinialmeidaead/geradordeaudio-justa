@@ -5,27 +5,29 @@ import TextToSpeechGenerator from "./text-to-speech-generator"
 import LegivixGenerator from "./legivix-generator"
 import NewsLegivixGenerator from "./news-legivix-generator"
 import RewriterLegivixGenerator from "./rewriter-legivix-generator"
+import RewriterJustaGenerator from "./rewriter-justa-generator"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
 import { Label } from "./ui/label"
 import TextGenerator from "./text-generator"
 
 export default function GeneratorSelector() {
-  const [mode, setMode] = useState<"audio" | "text" | "legivix" | "news-legivix" | "rewriter-legivix">("text")
+  const [mode, setMode] = useState<"audio" | "text" | "legivix" | "news-legivix" | "rewriter-legivix" | "rewriter-justa">("text")
 
   return (
     <div className="space-y-6">
       <div className="space-y-2">
         <Label htmlFor="mode">Selecione o modo</Label>
-        <Select value={mode} onValueChange={(value: "audio" | "text" | "legivix" | "news-legivix" | "rewriter-legivix") => setMode(value)}>
+        <Select value={mode} onValueChange={(value: "audio" | "text" | "legivix" | "news-legivix" | "rewriter-legivix" | "rewriter-justa") => setMode(value)}>
           <SelectTrigger id="mode" className="w-full">
             <SelectValue placeholder="Selecione o modo" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="text">Gerador de Texto</SelectItem>
+            <SelectItem value="text">Gerador de Conteúdo (com base em Notícias) - justa.legal</SelectItem>
             <SelectItem value="audio">Gerador de Áudio</SelectItem>
             <SelectItem value="legivix">Gerador de Conteúdo (Base de Conhecimento) - Legivix</SelectItem>
             <SelectItem value="news-legivix">Gerador de Conteúdo (com base em Notícias) - Legivix</SelectItem>
             <SelectItem value="rewriter-legivix">Reescritor de Conteúdo - Legivix</SelectItem>
+            <SelectItem value="rewriter-justa">Reescritor de Conteúdo - justa.legal</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -38,6 +40,8 @@ export default function GeneratorSelector() {
         <NewsLegivixGenerator />
       ) : mode === "rewriter-legivix" ? (
         <RewriterLegivixGenerator />
+      ) : mode === "rewriter-justa" ? (
+        <RewriterJustaGenerator />
       ) : (
         <TextGenerator />
       )}
