@@ -8,18 +8,19 @@ import RewriterLegivixGenerator from "./rewriter-legivix-generator"
 import RewriterJustaGenerator from "./rewriter-justa-generator"
 import BuscamedGenerator from "./buscamed-generator"
 import RewriterBuscamedGenerator from "./rewriter-buscamed-generator"
+import RewriterAvisaGenerator from "./rewriter-avisa-generator"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
 import { Label } from "./ui/label"
 import TextGenerator from "./text-generator"
 
 export default function GeneratorSelector() {
-  const [mode, setMode] = useState<"audio" | "text" | "legivix" | "news-legivix" | "rewriter-legivix" | "rewriter-justa" | "buscamed" | "rewriter-buscamed">("text")
+  const [mode, setMode] = useState<"audio" | "text" | "legivix" | "news-legivix" | "rewriter-legivix" | "rewriter-justa" | "buscamed" | "rewriter-buscamed" | "rewriter-avisa">("text")
 
   return (
     <div className="space-y-6">
       <div className="space-y-2">
         <Label htmlFor="mode">Selecione o modo</Label>
-        <Select value={mode} onValueChange={(value: "audio" | "text" | "legivix" | "news-legivix" | "rewriter-legivix" | "rewriter-justa" | "buscamed" | "rewriter-buscamed") => setMode(value)}>
+        <Select value={mode} onValueChange={(value: "audio" | "text" | "legivix" | "news-legivix" | "rewriter-legivix" | "rewriter-justa" | "buscamed" | "rewriter-buscamed" | "rewriter-avisa") => setMode(value)}>
           <SelectTrigger id="mode" className="w-full">
             <SelectValue placeholder="Selecione o modo" />
           </SelectTrigger>
@@ -32,6 +33,7 @@ export default function GeneratorSelector() {
             <SelectItem value="rewriter-justa">Reescritor de Conteúdo - justa.legal</SelectItem>
             <SelectItem value="buscamed">Gerador de Conteúdo (com notícias) - Buscamed</SelectItem>
             <SelectItem value="rewriter-buscamed">Reescritor de Conteúdo - Buscamed</SelectItem>
+            <SelectItem value="rewriter-avisa">Reescritor de Conteúdo - Avisa.ai</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -50,6 +52,8 @@ export default function GeneratorSelector() {
         <BuscamedGenerator />
       ) : mode === "rewriter-buscamed" ? (
         <RewriterBuscamedGenerator />
+      ) : mode === "rewriter-avisa" ? (
+        <RewriterAvisaGenerator />
       ) : (
         <TextGenerator />
       )}
