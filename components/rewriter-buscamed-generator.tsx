@@ -28,7 +28,7 @@ export default function RewriterBuscamedGenerator() {
         },
         body: JSON.stringify({
           inputs: {
-            tema: prompt
+            conteudo: prompt
           },
           response_mode: "blocking",
           user: "justa-ia",
