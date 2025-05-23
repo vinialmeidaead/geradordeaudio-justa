@@ -23,12 +23,12 @@ export default function RewriterBuscamedGenerator() {
       const response = await fetch("https://geral-dify.rf7qpg.easypanel.host/v1/workflows/run", {
         method: "POST",
         headers: {
-          "Authorization": "Bearer app-7EiBtAjbxZuiUwmBwwlxO1Mn",
+          "Authorization": "Bearer app-ws6aQhbzQssGDaFmT1b9fdC9",
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           inputs: {
-            conteudo: prompt
+            tema: prompt
           },
           response_mode: "blocking",
           user: "justa-ia",
